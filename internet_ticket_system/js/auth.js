@@ -92,9 +92,9 @@ function setupLoginForm() {
 function useDemoLogin(email, password) {
     // Demo credentials
     const demoCredentials = {
-        'cliente@exemplo.com': { password: 'cliente123', role: 'cliente', redirect: 'customer_dashboard.html' },
+        'cliente@exemplo.com': { password: 'cliente123', role: 'customer', redirect: 'customer_dashboard.html' },
         'admin@exemplo.com': { password: 'admin123', role: 'admin', redirect: 'admin_dashboard.html' },
-        'tecnico@exemplo.com': { password: 'tecnico123', role: 'tecnico', redirect: 'technician_dashboard.html' }
+        'tecnico@exemplo.com': { password: 'tecnico123', role: 'technician', redirect: 'technician_dashboard.html' }
     };
     
     setTimeout(() => {
@@ -123,10 +123,10 @@ function redirectToDashboard(role) {
         case 'admin':
             window.location.href = 'admin_dashboard.html';
             break;
-        case 'tecnico':
+        case 'technician':
             window.location.href = 'technician_dashboard.html';
             break;
-        case 'cliente':
+        case 'customer':
         default:
             window.location.href = 'customer_dashboard.html';
             break;

@@ -114,7 +114,7 @@ class AuthService {
             const userRole = this.getUserRole();
             if (userRole === 'admin') {
                 window.location.href = '../pages/admin_dashboard.html';
-            } else if (userRole === 'tecnico') {
+            } else if (userRole === 'technician') {
                 window.location.href = '../pages/technician_dashboard.html';
             } else {
                 window.location.href = '../pages/customer_dashboard.html';

@@ -179,6 +179,11 @@
                     <p class="text-sm text-text-secondary">Email: admin@exemplo.com</p>
                     <p class="text-sm text-text-secondary">Senha: admin123</p>
                 </div>
+                <div class="bg-secondary-50 p-3 rounded-lg">
+                    <p class="text-sm font-medium text-text-primary">Técnico:</p>
+                    <p class="text-sm text-text-secondary">Email: tecnico@exemplo.com</p>
+                    <p class="text-sm text-text-secondary">Senha: tecnico123</p>
+                </div>
             </div>
             <button id="closeModal" class="mt-4 w-full btn-primary">
                 Entendi
@@ -210,7 +215,8 @@
         // Demo credentials
         const demoCredentials = {
             'cliente@exemplo.com': { password: 'cliente123', role: 'customer', redirect: 'customer_dashboard.html' },
-            'admin@exemplo.com': { password: 'admin123', role: 'admin', redirect: 'admin_dashboard.html' }
+            'admin@exemplo.com': { password: 'admin123', role: 'admin', redirect: 'admin_dashboard.html' },
+            'tecnico@exemplo.com': { password: 'tecnico123', role: 'technician', redirect: 'technician_dashboard.html' }
         };
 
         loginForm.addEventListener('submit', function(e) {
