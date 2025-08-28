@@ -2,15 +2,18 @@
 
 ## Visão Geral
 
-Este é o backend do Sistema de Tickets para registrar e gerenciar problemas de internet. O sistema foi desenvolvido utilizando Node.js, Express e MongoDB, com recursos de observabilidade integrados ao Dynatrace e Splunk.
+Este é o backend do Sistema de Tickets para registrar e gerenciar problemas de internet. O sistema foi desenvolvido utilizando Node.js, Express e MongoDB, com recursos de observabilidade integrados ao Dynatrace e Splunk. O backend fornece uma API RESTful que é consumida pelo frontend para fornecer uma experiência completa ao usuário.
 
 ## Funcionalidades
 
 - API RESTful para gerenciamento de tickets
+- Autenticação de usuários com JWT
+- Controle de acesso baseado em perfis (cliente, técnico, admin)
 - Integração com API externa (ipify) para captura de IP do cliente
 - Métricas de observabilidade (CPU/Memória)
 - Logs estruturados enviados para Splunk
 - Métricas de negócio expostas via Prometheus
+- Histórico completo de tickets e interações
 
 ## Requisitos
 
@@ -104,6 +107,30 @@ A API ipify é utilizada para capturar o endereço IP do cliente. Para testar:
    - O sistema continuará funcionando sem enviar logs/métricas
    - Verificar tokens de API e URLs no arquivo `.env`
 
+## Integração Frontend-Backend
+
+O backend foi projetado para ser consumido pelo frontend através de uma API RESTful. A integração entre as duas camadas segue o seguinte fluxo:
+
+1. **Autenticação**
+   - O frontend envia credenciais para `/api/users/login`
+   - O backend valida e retorna token JWT
+   - O token é armazenado no localStorage para requisições subsequentes
+
+2. **Autorização**
+   - Todas as requisições protegidas incluem o token JWT no cabeçalho Authorization
+   - O middleware de autenticação valida o token e extrai informações do usuário
+   - O controle de acesso é aplicado com base no perfil do usuário
+
+3. **Comunicação de Dados**
+   - O frontend consome endpoints da API para obter e enviar dados
+   - Respostas são formatadas em JSON com estrutura padronizada
+   - Códigos de status HTTP são utilizados para indicar o resultado das operações
+
+4. **Tratamento de Erros**
+   - Erros são retornados com mensagens descritivas e códigos apropriados
+   - O frontend implementa fallbacks para cenários de indisponibilidade da API
+   - Logs detalhados são gerados para facilitar a depuração
+
 ## Quando Escalar para Outros Times
 
 1. **Time de Infraestrutura**:
@@ -134,5 +161,5 @@ A API ipify é utilizada para capturar o endereço IP do cliente. Para testar:
 
 3. **Métricas de Qualidade**:
    - Taxa de reabertura de tickets
-   - Satisfação do cliente (se implementado)
+   - Satisfação do cliente
    - Eficiência dos técnicos
