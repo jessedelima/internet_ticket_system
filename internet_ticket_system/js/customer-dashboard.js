@@ -28,9 +28,9 @@ function checkAuthentication() {
     }
     
     // Verifica se o usuário tem permissão para acessar esta página
-    if (userRole !== 'cliente' && userRole !== 'admin') {
+    if (userRole !== 'customer' && userRole !== 'admin') {
         // Redireciona para o dashboard apropriado
-        if (userRole === 'tecnico') {
+        if (userRole === 'technician') {
             window.location.href = 'technician_dashboard.html';
         } else {
             window.location.href = 'user_login.html';

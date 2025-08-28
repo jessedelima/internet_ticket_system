@@ -69,6 +69,8 @@ class UserService {
     static getRoleText(role) {
         const roleTexts = {
             'admin': 'Administrador',
+            'technician': 'Técnico',
+            'customer': 'Cliente',
             'tecnico': 'Técnico',
             'cliente': 'Cliente'
         };
@@ -84,6 +86,8 @@ class UserService {
     static getRoleClass(role) {
         const roleClasses = {
             'admin': 'bg-primary-100 text-primary-800',
+            'technician': 'bg-info-100 text-info-800',
+            'customer': 'bg-secondary-100 text-secondary-800',
             'tecnico': 'bg-info-100 text-info-800',
             'cliente': 'bg-secondary-100 text-secondary-800'
         };
